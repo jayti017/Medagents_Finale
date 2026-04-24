@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "symptoms": ["fever", "cough", "sore throat"],
+    "possible_diseases": ["flu", "covid-19"],
+    "correct_diagnosis": "flu",
+    "tests": {"rapid_test": "negative covid"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 2,
+    "symptoms": ["fever", "cough", "weight loss"],
+    "possible_diseases": ["tuberculosis", "lung cancer"],
+    "correct_diagnosis": "tuberculosis",
+    "tests": {"sputum": "tb bacteria detected"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 3,
+    "symptoms": ["cough", "chest pain", "blood in sputum"],
+    "possible_diseases": ["lung cancer", "tuberculosis"],
+    "correct_diagnosis": "lung cancer",
+    "tests": {"biopsy": "malignant cells"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 4,
+    "symptoms": ["frequent urination", "increased thirst"],
+    "possible_diseases": ["diabetes type 2"],
+    "correct_diagnosis": "diabetes type 2",
+    "tests": {"blood_sugar": "high"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 5,
+    "symptoms": ["chest pain", "shortness of breath"],
+    "possible_diseases": ["heart attack", "angina"],
+    "correct_diagnosis": "heart attack",
+    "tests": {"troponin": "elevated"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 6,
+    "symptoms": ["headache", "vision problems", "vomiting"],
+    "possible_diseases": ["migraine", "brain tumor"],
+    "correct_diagnosis": "brain tumor",
+    "tests": {"mri": "tumor detected"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 7,
+    "symptoms": ["itching", "red rash"],
+    "possible_diseases": ["eczema", "allergy"],
+    "correct_diagnosis": "eczema",
+    "tests": {"skin_exam": "inflammation"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 8,
+    "symptoms": ["fever", "joint pain", "rash"],
+    "possible_diseases": ["dengue", "chikungunya"],
+    "correct_diagnosis": "dengue",
+    "tests": {"platelet_count": "low"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 9,
+    "symptoms": ["fever", "body ache", "low platelets"],
+    "possible_diseases": ["dengue", "malaria"],
+    "correct_diagnosis": "dengue",
+    "tests": {"antigen": "dengue positive"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 10,
+    "symptoms": ["fatigue", "pale skin"],
+    "possible_diseases": ["anemia"],
+    "correct_diagnosis": "anemia",
+    "tests": {"hemoglobin": "low"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 11,
+    "symptoms": ["weight loss", "fatigue", "night sweats"],
+    "possible_diseases": ["tuberculosis", "lymphoma"],
+    "correct_diagnosis": "lymphoma",
+    "tests": {"biopsy": "cancerous lymph cells"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 12,
+    "symptoms": ["burning urination"],
+    "possible_diseases": ["urinary tract infection"],
+    "correct_diagnosis": "urinary tract infection",
+    "tests": {"urine": "bacteria present"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 13,
+    "symptoms": ["yellow skin", "fatigue"],
+    "possible_diseases": ["hepatitis", "liver disease"],
+    "correct_diagnosis": "hepatitis",
+    "tests": {"liver_function": "abnormal"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 14,
+    "symptoms": ["abdominal pain", "weight loss"],
+    "possible_diseases": ["stomach cancer", "ulcer"],
+    "correct_diagnosis": "stomach cancer",
+    "tests": {"endoscopy": "tumor found"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 15,
+    "symptoms": ["fever", "headache"],
+    "possible_diseases": ["viral fever"],
+    "correct_diagnosis": "viral fever",
+    "tests": {"blood": "normal viral"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 16,
+    "symptoms": ["itching", "scaly skin"],
+    "possible_diseases": ["psoriasis", "fungal infection"],
+    "correct_diagnosis": "psoriasis",
+    "tests": {"biopsy": "psoriatic cells"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 17,
+    "symptoms": ["persistent cough", "fatigue"],
+    "possible_diseases": ["tuberculosis", "chronic bronchitis"],
+    "correct_diagnosis": "chronic bronchitis",
+    "tests": {"xray": "bronchial thickening"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 18,
+    "symptoms": ["joint pain", "stiffness"],
+    "possible_diseases": ["arthritis"],
+    "correct_diagnosis": "arthritis",
+    "tests": {"xray": "joint damage"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 19,
+    "symptoms": ["weight loss", "high blood sugar"],
+    "possible_diseases": ["diabetes type 1", "diabetes type 2"],
+    "correct_diagnosis": "diabetes type 1",
+    "tests": {"insulin": "low"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 20,
+    "symptoms": ["skin rash", "blisters"],
+    "possible_diseases": ["chickenpox"],
+    "correct_diagnosis": "chickenpox",
+    "tests": {"clinical": "typical lesions"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 21,
+    "symptoms": ["cough", "fever", "loss of taste"],
+    "possible_diseases": ["covid-19", "flu"],
+    "correct_diagnosis": "covid-19",
+    "tests": {"rt_pcr": "positive"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 22,
+    "symptoms": ["severe headache", "neck stiffness"],
+    "possible_diseases": ["meningitis", "migraine"],
+    "correct_diagnosis": "meningitis",
+    "tests": {"csf": "infection present"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 23,
+    "symptoms": ["white patches on skin"],
+    "possible_diseases": ["vitiligo"],
+    "correct_diagnosis": "vitiligo",
+    "tests": {"wood_lamp": "depigmentation"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 24,
+    "symptoms": ["chest pain", "fatigue"],
+    "possible_diseases": ["heart attack", "anxiety"],
+    "correct_diagnosis": "heart attack",
+    "tests": {"ecg": "abnormal"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 25,
+    "symptoms": ["abdominal pain", "diarrhea"],
+    "possible_diseases": ["food poisoning", "gastroenteritis"],
+    "correct_diagnosis": "food poisoning",
+    "tests": {"stool": "toxins present"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 26,
+    "symptoms": ["fatigue", "weight loss", "lumps"],
+    "possible_diseases": ["cancer", "infection"],
+    "correct_diagnosis": "cancer",
+    "tests": {"biopsy": "malignant"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 27,
+    "symptoms": ["runny nose", "sneezing"],
+    "possible_diseases": ["allergy"],
+    "correct_diagnosis": "allergy",
+    "tests": {"allergy_test": "positive"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 28,
+    "symptoms": ["fever", "chills"],
+    "possible_diseases": ["malaria"],
+    "correct_diagnosis": "malaria",
+    "tests": {"blood": "parasite present"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 29,
+    "symptoms": ["persistent fatigue", "swelling"],
+    "possible_diseases": ["kidney disease", "heart failure"],
+    "correct_diagnosis": "kidney disease",
+    "tests": {"creatinine": "high"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 30,
+    "symptoms": ["cough", "shortness of breath"],
+    "possible_diseases": ["asthma"],
+    "correct_diagnosis": "asthma",
+    "tests": {"spirometry": "reduced airflow"},
+    "severity": "medium",
+    "critical": false
+  },
+  {
+    "id": 31,
+    "symptoms": ["skin lesion", "irregular mole"],
+    "possible_diseases": ["skin cancer", "benign mole"],
+    "correct_diagnosis": "skin cancer",
+    "tests": {"biopsy": "malignant melanoma"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 32,
+    "symptoms": ["back pain", "weight loss"],
+    "possible_diseases": ["spine infection", "cancer"],
+    "correct_diagnosis": "spine infection",
+    "tests": {"mri": "infection"},
+    "severity": "high",
+    "critical": true
+  },
+  {
+    "id": 33,
+    "symptoms": ["fever", "confusion"],
+    "possible_diseases": ["sepsis", "meningitis"],
+    "correct_diagnosis": "sepsis",
+    "tests": {"blood": "infection markers high"},
+    "severity": "critical",
+    "critical": true
+  },
+  {
+    "id": 34,
+    "symptoms": ["itching", "ring-shaped rash"],
+    "possible_diseases": ["fungal infection"],
+    "correct_diagnosis": "fungal infection",
+    "tests": {"skin_scrape": "fungus present"},
+    "severity": "low",
+    "critical": false
+  },
+  {
+    "id": 35,
+    "symptoms": ["chest pain", "breathlessness", "sweating"],
+    "possible_diseases": ["heart attack", "panic attack"],
+    "correct_diagnosis": "heart attack",
+    "tests": {"ecg": "abnormal"},
+    "severity": "critical",
+    "critical": true
+  }
+]
