@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "medagents-x"
+version = "1.0.0"
+description = "Multi-Agent Clinical Decision System — OpenEnv RL Environment"
+authors = [
+    {name = "Team Coders", email = "team@scalerschool.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastapi==0.111.0",
+    "uvicorn[standard]==0.29.0",
+    "pydantic>=2.0.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "openenv>=0.1.13",
+]
+
+[project.optional-dependencies]
+training = [
+    "torch>=2.0.0",
+    "transformers>=4.40.0",
+    "trl>=0.8.0",
+    "peft>=0.10.0",
+    "datasets>=2.0.0",
+    "accelerate>=0.28.0",
+    "bitsandbytes>=0.43.0",
+]
+
+[project.urls]
+Homepage = "https://huggingface.co/spaces/YOUR_USERNAME/medagents-x"
+Repository = "https://github.com/YOUR_USERNAME/medagents-x"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agents*", "utils*", "server*"]
+
+[tool.setuptools.package-data]
+"*" = ["dataset.json", "openenv.yaml", "*.md"]
+
+[project.scripts]
+medagents = "main:run_pipeline"
+server = "server.app:main"

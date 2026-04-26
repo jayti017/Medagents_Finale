@@ -1,37 +1,20 @@
-# Generated log files - different every run, no need in GitHub
-logs/
-
-# Memory store - updates every run, machine-specific
+# Keep graphs but ignore raw log files
+logs/*.jsonl
+logs/*.json
+logs/graphs/.gitkeep
 memory_store.json
-
-# Python cache files - auto-generated, never commit these
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
-
-# Virtual environment - if you create one
 venv/
-env/
-.venv/
-
-# Training checkpoints - too large for GitHub
 medagents_sft/
 medagents_grpo/
 medagents_grpo_merged/
-medagents_grpo_lora/
 *.bin
 *.safetensors
 *.pt
 *.pth
-
-# OS generated files
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# IDE files
 .vscode/
 .idea/
-*.swp

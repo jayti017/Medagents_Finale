@@ -1,0 +1,190 @@
+name: medagents-x
+version: "1.0.0"
+description: >
+  Multi-Agent Clinical Decision System — Six AI agents collaborate
+  to diagnose patients from partial symptoms using reinforcement learning.
+
+author: "Team Coders — Sourav Bhardwaj, Tanishka, Jayti"
+organization: "Scaler School of Technology"
+license: MIT
+
+# ── Environment Interface ──────────────────────────────────────────────────────
+environment:
+  type: openenv
+  entry_point: server:app
+  framework: fastapi
+  port: 7860
+
+  endpoints:
+    reset:
+      method: POST
+      path: /reset
+      description: Start a new patient case episode
+      request_body:
+        type: object
+        properties:
+          seed:
+            type: integer
+            description: Optional random seed for reproducibility
+        required: []
+      response:
+        state:
+          case_id: integer
+          stage: string
+          step_count: integer
+          episode_done: boolean
+          cumulative_reward: float
+          observation: object
+          active_agents: array
+          valid_actions: array
+        message: string
+
+    step:
+      method: POST
+      path: /step
+      description: Execute one agent action in the environment
+      request_body:
+        type: object
+        properties:
+          agent_role:
+            type: string
+            enum: [gp, radiologist, pathologist, specialist, supervisor, oversight]
+          action_type:
+            type: string
+          content:
+            type: object
+        required: [agent_role, action_type]
+      response:
+        state: object
+        reward: float
+        done: boolean
+        info: object
+
+    health:
+      method: GET
+      path: /health
+      description: Health check endpoint
+
+# ── RL Environment Specification ───────────────────────────────────────────────
+rl:
+  observation_space:
+    type: partial
+    description: >
+      Partial observability enforced across 6 pipeline stages.
+      Agents only see symptoms at Stage 0. Test results revealed at Stage 2.
+
+  action_space:
+    type: discrete_per_stage
+    stages:
+      INITIAL_ASSESSMENT:
+        actions: [form_differential, note_critical_flags, request_more_history]
+        agents: [gp]
+      TEST_RECOMMENDATION:
+        actions: [order_test, justify_test, skip_unnecessary_test]
+        agents: [gp, specialist]
+      TEST_ANALYSIS:
+        actions: [interpret_imaging, interpret_lab, flag_abnormal, request_repeat_test]
+        agents: [radiologist, pathologist]
+      DIAGNOSIS_DECISION:
+        actions: [propose_diagnosis, refine_differential, flag_uncertainty]
+        agents: [specialist]
+      SUPERVISOR_REVIEW:
+        actions: [approve_diagnosis, reject_diagnosis, provide_feedback, escalate_case]
+        agents: [supervisor]
+      OVERSIGHT_FEEDBACK:
+        actions: [log_pattern, update_agent_rules, generate_report]
+        agents: [oversight]
+
+  reward:
+    type: composite
+    range: [-1.0, 2.5]
+    components:
+      correct_diagnosis:     +0.40
+      evidence_reasoning:    +0.20
+      confidence_calibration: +0.20
+      test_efficiency:       +0.10
+      critical_disease:      +0.10
+      wrong_diagnosis:       -0.50
+      critical_miss:         -0.20
+      overconfidence:        -0.15
+      unnecessary_test:      -0.10
+    severity_multiplier:
+      low:      1.0
+      medium:   1.2
+      high:     1.5
+      critical: 2.0
+
+  episode:
+    max_steps: 25
+    termination: pipeline_complete or max_steps_reached
+
+# ── Agents ─────────────────────────────────────────────────────────────────────
+agents:
+  - name: gp
+    role: General Physician
+    description: Initial assessment from symptoms, forms differential diagnosis
+    active_stages: [INITIAL_ASSESSMENT, TEST_RECOMMENDATION]
+
+  - name: radiologist
+    role: Radiologist
+    description: Interprets imaging results — MRI, X-ray, ECG
+    active_stages: [TEST_ANALYSIS]
+
+  - name: pathologist
+    role: Pathologist
+    description: Interprets lab and biopsy results
+    active_stages: [TEST_ANALYSIS]
+
+  - name: specialist
+    role: Specialist
+    description: Synthesizes all evidence and proposes final diagnosis
+    active_stages: [TEST_RECOMMENDATION, DIAGNOSIS_DECISION]
+
+  - name: supervisor
+    role: Supervisor
+    description: Reviews diagnosis, approves or rejects, generates feedback
+    active_stages: [SUPERVISOR_REVIEW]
+
+  - name: oversight
+    role: Oversight AI
+    description: Cross-case pattern detection, updates agent memory
+    active_stages: [OVERSIGHT_FEEDBACK]
+
+# ── Dataset ─────────────────────────────────────────────────────────────────────
+dataset:
+  file: dataset.json
+  size: 35
+  format: json
+  fields:
+    - id
+    - symptoms
+    - possible_diseases
+    - correct_diagnosis
+    - tests
+    - severity
+    - critical
+
+# ── Training ────────────────────────────────────────────────────────────────────
+training:
+  framework: trl
+  algorithm: GRPO
+  warmup: SFT
+  model: Qwen/Qwen2.5-0.5B-Instruct
+  results:
+    pre_training:
+      accuracy: 45.7%
+      mean_reward:  +0.4966
+    post_training:
+      accuracy: 60.0% ,
+      "mean_reward": +0.9187
+
+# ── Docker ──────────────────────────────────────────────────────────────────────
+docker:
+  dockerfile: Dockerfile
+  port: 7860
+  health_check: /health
+
+# ── HuggingFace ──────────────────────────────────────────────────────────────────
+huggingface:
+  space_sdk: docker
+  app_port: 7860
