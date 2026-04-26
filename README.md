@@ -205,3 +205,14 @@ Environment live at `https://USERNAME-medagents-x.hf.space/docs`
 <div align="center">
 <sub>Python 3.11 · FastAPI · HuggingFace TRL · Unsloth · OpenEnv</sub>
 </div>
+---
+title: Medagents Finale
+emoji: 👁
+colorFrom: purple
+colorTo: indigo
+sdk: docker
+pinned: false
+license: mit
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
