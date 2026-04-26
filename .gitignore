@@ -1,7 +1,9 @@
 # Keep graphs but ignore raw log files
+logs/graphs/
+*.png
 logs/*.jsonl
 logs/*.json
-logs/graphs/.gitkeep
+#logs/graphs/.gitkeep
 memory_store.json
 __pycache__/
 *.pyc
